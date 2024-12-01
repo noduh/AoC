@@ -1,24 +1,33 @@
 def sort_lists(list1, list2):
     list1.sort()
     list2.sort()
-    print(f"{list1} {list2}")
     return list1, list2
 
 
 def list_distances(list1, list2):
+    assert len(list1) == len(list2), "not the same length!"
+
     distances = []
+
+    for i in range(len(list1)):
+        if list1[i] > list2[i]:
+            distances.append(list1[i] - list2[i])
+        else:
+            distances.append(list2[i] - list1[i])
+
     return distances
 
 
 def total_distance(distances):
     total = 0
+    for d in distances:
+        total += d
     return total
 
 
 def main():
     list1 = [3, 4, 2, 1, 3, 3]
     list2 = [4, 3, 5, 3, 9, 3]
-    assert len(list1) == len(list2), "not the same length!"
 
     list1, list2 = sort_lists(list1, list2)
     distances = list_distances(list1, list2)
