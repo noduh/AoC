@@ -37,6 +37,9 @@ def create_lists(file_location):
 
     return list1, list2
 
+def find_similarities(list1, list2):
+    similarities = []
+    return similarities
 
 def main():
     list1, list2 = create_lists("Dec 01/challenge_input.txt")
