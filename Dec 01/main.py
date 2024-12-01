@@ -18,10 +18,10 @@ def list_distances(list1, list2):
     return distances
 
 
-def total_distance(distances):
+def total(numbers):
     total = 0
-    for d in distances:
-        total += d
+    for n in numbers:
+        total += n
     return total
 
 
@@ -43,7 +43,7 @@ def main():
 
     list1, list2 = sort_lists(list1, list2)
     distances = list_distances(list1, list2)
-    total = total_distance(distances)
+    total = total(distances)
 
     print(f"Total Distance: {total}")
     return
