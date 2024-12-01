@@ -24,10 +24,14 @@ def total_distance(distances):
         total += d
     return total
 
+def create_lists(file_location):
+    list1 = []
+    list2 = []
+
+    return list1, list2
 
 def main():
-    list1 = [3, 4, 2, 1, 3, 3]
-    list2 = [4, 3, 5, 3, 9, 3]
+    list1, list2 = create_lists("challenge_input.txt")
 
     list1, list2 = sort_lists(list1, list2)
     distances = list_distances(list1, list2)
