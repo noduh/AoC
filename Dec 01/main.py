@@ -37,18 +37,26 @@ def create_lists(file_location):
 
     return list1, list2
 
+
 def find_similarities(list1, list2):
     similarities = []
+    for n in list1:
+        similarities.append(list2.count(n))
+
     return similarities
+
 
 def main():
     list1, list2 = create_lists("Dec 01/challenge_input.txt")
 
     list1, list2 = sort_lists(list1, list2)
     distances = list_distances(list1, list2)
-    total = total(distances)
+    total_distance = total(distances)
+    similarities = find_similarities(list1, list2)
+    total_similarity = total(similarities)
 
-    print(f"Total Distance: {total}")
+    print(f"Total Distance: {total_distance}")
+    print(f"Total Similarity: {total_similarity}")
     return
 
 
