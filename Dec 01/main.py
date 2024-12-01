@@ -41,7 +41,7 @@ def create_lists(file_location):
 def find_similarities(list1, list2):
     similarities = []
     for n in list1:
-        similarities.append(list2.count(n))
+        similarities.append(n * list2.count(n))
 
     return similarities
 
