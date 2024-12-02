@@ -31,7 +31,7 @@ def is_safe(full_report: list):
 
             # Case if it's ascending
             if ascending:
-                if distance < 3 or distance > 1:
+                if distance < 3 and distance > 1:
                     return True
 
             # Case if it's descending
