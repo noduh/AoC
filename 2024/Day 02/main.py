@@ -1,8 +1,3 @@
-##########
-# Part 1 #
-##########
-
-
 def get_reports(file_location):
     """Gives a list of lists where each sub-list is a report"""
     reports = []
