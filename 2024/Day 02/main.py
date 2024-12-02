@@ -2,6 +2,7 @@
 # Part 1 #
 ##########
 
+
 def get_reports(file_location):
     """Gives a list of lists where each sub-list is a report"""
     reports = []
@@ -46,14 +47,34 @@ def total_true(reports_results):
     return count
 
 
+def updated_is_safe(full_report: list):
+    """Runs is_safe to work for part 2"""
+    for i in range(len(full_report)):
+        report = full_report[:]
+        report.pop(i)
+        if is_safe(report):
+            return True
+
+    return False
+
+
 def main():
     reports = get_reports("2024\Day 02\challenge_input.txt")
+
+    # Part 1
     reports_results = []
     for report in reports:
         reports_results.append(is_safe(report))
     safe_reports = total_true(reports_results)
 
+    # Part 2
+    reports_results_2 = []
+    for report in reports:
+        reports_results_2.append(updated_is_safe(report))
+    safe_reports_2 = total_true(reports_results_2)
+
     print(f"Safe Reports: {safe_reports}")
+    print(f"Updated Safe Reports: {safe_reports_2}")
     return
 
 
