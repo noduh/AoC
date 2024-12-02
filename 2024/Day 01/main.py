@@ -47,7 +47,7 @@ def find_similarities(list1, list2):
 
 
 def main():
-    list1, list2 = create_lists("Dec 01/challenge_input.txt")
+    list1, list2 = create_lists("2024\Day 01\challenge_input.txt")
 
     list1, list2 = sort_lists(list1, list2)
     distances = list_distances(list1, list2)
