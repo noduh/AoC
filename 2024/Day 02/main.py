@@ -1,4 +1,4 @@
-def get_reports(file_location):
+def get_reports(file_location: str) -> list[str]:
     """Gives a list of lists where each sub-list is a report"""
     reports = []
     with open(file_location, "r") as file:
@@ -8,7 +8,7 @@ def get_reports(file_location):
     return reports
 
 
-def is_safe(report):
+def is_safe(report: list[str]) -> bool:
     """Checks if a report is safe"""
     ascending = None
     for i in range(1, len(report)):
@@ -32,7 +32,7 @@ def is_safe(report):
     return True
 
 
-def total_true(reports_results):
+def total_true(reports_results: list[int]) -> int:
     """Totals the number of elements that are True"""
     count = 0
     for result in reports_results:
@@ -42,7 +42,7 @@ def total_true(reports_results):
     return count
 
 
-def updated_is_safe(full_report: list):
+def updated_is_safe(full_report: list[str]) -> bool:
     """Runs is_safe to work for part 2"""
     for i in range(len(full_report)):
         report = full_report[:]
