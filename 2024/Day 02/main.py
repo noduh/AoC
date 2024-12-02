@@ -5,12 +5,30 @@ def get_reports(file_location):
         for line in file:
             reports.append(line.split())
 
-    print(reports)
     return reports
 
 
 def is_safe(report):
     """Checks if a report is safe"""
+    ascending = None
+    for i in range(1, len(report)):
+        # Determine order if it hasn't been determined
+        distance = report[i] - report[i - 1]
+        if ascending == None:
+            if distance > 0:
+                ascending = True
+            elif distance < 0:
+                ascending = False
+
+        # Case if it's ascending
+        if ascending:        
+            if distance > 3 or distance < 1:
+                return False
+
+        # Case if it's descending
+        else:
+            if distance < -3 or distance > -1:
+                return False 
     return True
 
 
@@ -25,6 +43,7 @@ def main():
     reports_results = []
     for report in reports:
         reports_results.append(is_safe(report))
+    print(reports_results)
     safe_reports = total_true(reports_results)
 
     print(f"Safe Reports: {safe_reports}")
