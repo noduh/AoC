@@ -2,7 +2,8 @@
 # Part 2 #
 ##########
 
-def get_reports(file_location):
+
+def get_reports(file_location: str):
     """Gives a list of lists where each sub-list is a report"""
     reports = []
     with open(file_location, "r") as file:
@@ -12,31 +13,35 @@ def get_reports(file_location):
     return reports
 
 
-def is_safe(report):
+def is_safe(full_report: list):
     """Checks if a report is safe"""
     ascending = None
-    for i in range(1, len(report)):
-        # Determine order if it hasn't been determined
-        distance = int(report[i]) - int(report[i - 1])
-        if ascending == None:
-            if distance > 0:
-                ascending = True
-            elif distance < 0:
-                ascending = False
+    for n in range(len(full_report)):
+        report = full_report[:] # make a copy instead of passing reference
+        report.pop(n)
 
-        # Case if it's ascending
-        if ascending:
-            if distance > 3 or distance < 1:
-                return False
+        for i in range(1, len(report)):
+            # Determine order if it hasn't been determined
+            distance = int(report[i]) - int(report[i - 1])
+            if ascending == None:
+                if distance > 0:
+                    ascending = True
+                elif distance < 0:
+                    ascending = False
 
-        # Case if it's descending
-        else:
-            if distance < -3 or distance > -1:
-                return False
-    return True
+            # Case if it's ascending
+            if ascending:
+                if distance < 3 or distance > 1:
+                    return True
+
+            # Case if it's descending
+            else:
+                if distance > -3 and distance < -1:
+                    return True
+    return False
 
 
-def total_true(reports_results):
+def total_true(reports_results: list):
     """Totals the number of elements that are True"""
     count = 0
     for result in reports_results:
