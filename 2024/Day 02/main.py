@@ -35,6 +35,10 @@ def is_safe(report):
 def total_true(reports_results):
     """Totals the number of elements that are True"""
     count = 0
+    for result in reports_results:
+        if result == True:
+            count += 1
+
     return count
 
 
@@ -43,7 +47,6 @@ def main():
     reports_results = []
     for report in reports:
         reports_results.append(is_safe(report))
-    print(reports_results)
     safe_reports = total_true(reports_results)
 
     print(f"Safe Reports: {safe_reports}")
