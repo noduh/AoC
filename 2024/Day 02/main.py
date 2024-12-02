@@ -13,7 +13,7 @@ def is_safe(report):
     ascending = None
     for i in range(1, len(report)):
         # Determine order if it hasn't been determined
-        distance = report[i] - report[i - 1]
+        distance = int(report[i]) - int(report[i - 1])
         if ascending == None:
             if distance > 0:
                 ascending = True
@@ -21,14 +21,14 @@ def is_safe(report):
                 ascending = False
 
         # Case if it's ascending
-        if ascending:        
+        if ascending:
             if distance > 3 or distance < 1:
                 return False
 
         # Case if it's descending
         else:
             if distance < -3 or distance > -1:
-                return False 
+                return False
     return True
 
 
