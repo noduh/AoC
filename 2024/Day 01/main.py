@@ -1,12 +1,12 @@
 def sort_lists(list1: list[int], list2: list[int]) -> tuple[list[int], list[int]]:
-    """sorts the two lists"""
+    """Sorts the two lists"""
     list1.sort()
     list2.sort()
     return list1, list2
 
 
 def list_distances(list1: list[int], list2: list[int]) -> list[int]:
-    """creates a list that shows the distances between the two lists"""
+    """Creates a list that shows the distances between the two lists"""
     assert len(list1) == len(list2), "not the same length!"
 
     distances = []
@@ -21,7 +21,7 @@ def list_distances(list1: list[int], list2: list[int]) -> list[int]:
 
 
 def total(numbers: list[int]) -> int:
-    """totals all the numbers in a list"""
+    """Totals all the numbers in a list"""
     total = 0
     for n in numbers:
         total += n
@@ -29,7 +29,7 @@ def total(numbers: list[int]) -> int:
 
 
 def create_lists(file_location: str) -> tuple[list[int], list[int]]:
-    """using a file written a specific way, create two lists of numbers"""
+    """Using a file written a specific way, create two lists of numbers"""
     list1 = []
     list2 = []
 
@@ -43,7 +43,7 @@ def create_lists(file_location: str) -> tuple[list[int], list[int]]:
 
 
 def find_similarities(list1: list[int], list2: list[int]) -> list[int]:
-    """create the similarity scores in a list"""
+    """Create the similarity scores in a list"""
     similarities = []
     for n in list1:
         similarities.append(n * list2.count(n))
