@@ -1,14 +1,21 @@
 def get_reports(file_location):
     """Gives a list of lists where each sub-list is a report"""
     reports = []
+    with open(file_location, "r") as file:
+        for line in file:
+            reports.append(line.split())
+
+    print(reports)
     return reports
 
 
 def is_safe(report):
+    """Checks if a report is safe"""
     return True
 
 
 def total_true(reports_results):
+    """Totals the number of elements that are True"""
     count = 0
     return count
 
