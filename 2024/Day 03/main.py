@@ -66,7 +66,7 @@ def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
     else:
         can_multiply = False
 
-    if not can_multiply and len(input_data) != 2:
+    if (not can_multiply) or len(input_data) != 2:
         can_multiply = False
     else:
         try:
