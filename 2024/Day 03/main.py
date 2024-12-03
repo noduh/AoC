@@ -68,6 +68,10 @@ def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
         except ValueError:
             can_multiply = False
 
+    # check that it's a 1-3 digit number
+    if abs(x) >= 1000 or abs(y) >= 1000:
+        can_multiply = False
+
     return can_multiply, (x, y)
 
 
