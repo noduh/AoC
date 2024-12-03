@@ -9,6 +9,36 @@ def get_input(file_location: str) -> str:
 def get_command_inputs(command: str, input_string: str) -> list[str]:
     """returns the inputs for each time the specified command is found"""
     inputs = []
+    current_input = ""
+    start_data_str = (
+        command + "("
+    )  # this is used so that the function only starts collecting after the open paren
+    location_in_command = (
+        0  # this helps keep track of if we're still continuing in the command properly
+    )
+    collecting_data = (
+        False  # to check if we're collecting data at a certain point in the loop
+    )
+
+    for char in input_string:
+        if not collecting_data:
+            if char == start_data_str[location_in_command]:
+                location_in_command += 1
+            else:  # start over if you failed to match the string
+                location_in_command = 0
+
+            if location_in_command >= len(
+                start_data_str
+            ):  # at this point you should collect data
+                location_in_command = 0
+                collecting_data = True
+        else:
+            if char == ")":  # 3nd of command
+                collecting_data = False  # don't collect at the end
+                inputs.append(current_input)
+            else:
+                current_input += char
+
     return inputs
 
 
@@ -17,12 +47,14 @@ def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
     x = None
     y = None
     can_multiply = True
-    input_string = command_input # will no longer remove parentheses. this will happen before the function is called
+    input_string = command_input  # will no longer remove parentheses. this will happen before the function is called
     input_data = []
 
     # check for invalid whitespace
     if input_string == input_string.strip():
-        input_string = input_string.replace(" ", ".") # helps casting fail invalid inputs with extra whitespace
+        input_string = input_string.replace(
+            " ", "."
+        )  # helps casting fail invalid inputs with extra whitespace
         input_data = input_string.split(",")
     else:
         can_multiply = False
