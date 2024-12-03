@@ -1,4 +1,4 @@
-IS_PART_2 = True
+IS_PART_2 = False
 
 
 def get_input(file_location: str) -> str:
@@ -146,7 +146,6 @@ def main():
         can_multiply, data = get_multiply_data(command_input)
         if can_multiply:
             x, y = data
-            print(f"{x}*{y}")
             products.append(multiply(x, y))
 
     product_total = total(products)
