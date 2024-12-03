@@ -1,4 +1,4 @@
-IS_PART_2 = False
+IS_PART_2 = True
 
 
 def get_input(file_location: str) -> str:
