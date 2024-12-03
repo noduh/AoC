@@ -1,6 +1,8 @@
 def get_input(file_location: str) -> str:
     """takes the file and turns it into a string"""
     file_input = ""
+    with open(file_location, "r") as file:
+        file_input = file.read()
     return file_input
 
 
@@ -41,5 +43,6 @@ def main():
     product_total = total(products)
 
     print(f"Total of Products: {product_total}")
+
 
 main()
