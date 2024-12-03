@@ -36,6 +36,11 @@ def get_command_inputs(command: str, input_string: str) -> list[str]:
             if char == ")":  # 3nd of command
                 collecting_data = False  # don't collect at the end
                 inputs.append(current_input)
+            elif (
+                char == start_data_str[location_in_command]
+            ):  # reset if you find the start of another command
+                location_in_command += 1
+                collecting_data = False
             else:
                 current_input += char
 
