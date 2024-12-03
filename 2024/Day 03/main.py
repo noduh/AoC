@@ -36,13 +36,13 @@ def get_command_inputs(command: str, input_string: str) -> list[str]:
             if char == ")":  # 3nd of command
                 collecting_data = False  # don't collect at the end
                 inputs.append(current_input)
-                current_input = "" # clear input
+                current_input = ""  # clear input
             elif (
                 char == start_data_str[location_in_command]
             ):  # reset if you find the start of another command
                 location_in_command += 1
                 collecting_data = False
-                current_input = "" # clear input
+                current_input = ""  # clear input
             else:
                 current_input += char
 
@@ -75,9 +75,10 @@ def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
         except ValueError:
             can_multiply = False
 
-    # check that it's a 1-3 digit number
-    if abs(x) >= 1000 or abs(y) >= 1000:
-        can_multiply = False
+    if can_multiply:
+        # check that it's a 1-3 digit number
+        if abs(x) >= 1000 or abs(y) >= 1000:
+            can_multiply = False
 
     return can_multiply, (x, y)
 
