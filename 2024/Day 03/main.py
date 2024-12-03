@@ -7,7 +7,7 @@ def get_input(file_location: str) -> str:
 
 
 def get_command_inputs(command: str, input_string: str) -> list[str]:
-    """returns the inputs for each time the specified command is found"""
+    """Returns the inputs for each time the specified command is found"""
     inputs = []
     current_input = ""
     start_data_str = (
@@ -50,7 +50,7 @@ def get_command_inputs(command: str, input_string: str) -> list[str]:
 
 
 def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
-    """checks if the input is valid for the multiply command"""
+    """Checks if the input is valid for the multiply command"""
     x = None
     y = None
     can_multiply = True
@@ -84,7 +84,7 @@ def get_multiply_data(command_input: str) -> tuple[bool, tuple[int, int]]:
 
 
 def multiply(x: int, y: int) -> int:
-    """multiplies the two specified numbers and returns the product"""
+    """Multiplies the two specified numbers and returns the product"""
     return x * y
 
 
@@ -95,6 +95,12 @@ def total(numbers: list[int]) -> int:
         total += n
     return total
 
+def enable_disable_filter(input_string: str) -> str:
+    """Function to take out any text that shouldn't be searched if we want to toggle enable and disable"""
+    disable_str = "don't()"
+    enable_str = "do()"
+    filtered_string = ""
+    return filtered_string
 
 def main():
     products = []
@@ -113,17 +119,3 @@ def main():
 
 
 main()
-
-
-# # TESTING
-# can_multiply, (x, y) = get_multiply_data("10, 15")
-# print(f"{can_multiply} | {x}*{y}")
-
-# can_multiply, (x, y) = get_multiply_data("10,15")
-# print(f"{can_multiply} | {x}*{y}")
-
-# can_multiply, (x, y) = get_multiply_data(" 10,15")
-# print(f"{can_multiply} | {x}*{y}")
-
-# can_multiply, (x, y) = get_multiply_data("a10,15")
-# print(f"{can_multiply} | {x}*{y}")
