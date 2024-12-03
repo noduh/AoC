@@ -95,12 +95,42 @@ def total(numbers: list[int]) -> int:
         total += n
     return total
 
+
 def enable_disable_filter(input_string: str) -> str:
     """Function to take out any text that shouldn't be searched if we want to toggle enable and disable"""
     disable_str = "don't()"
     enable_str = "do()"
     filtered_string = ""
+    location_in_command = 0
+    enabled = True
+
+    for char in input_string:
+        if enabled:
+            # if it could match the command, keep looking for the rest of the command
+            if char == disable_str[location_in_command]:
+                location_in_command += 1
+                # reset location and disable copying if you reach the full disable command
+                if location_in_command >= len(disable_str):
+                    location_in_command = 0
+                    enabled = False
+            # copy data and reset location if you don't match the command
+            else:
+                location_in_command = 0
+                filtered_string += char
+        else:
+            # if it could match the command, keep looking for the rest of the command
+            if char == enable_str[location_in_command]:
+                location_in_command += 1
+                # reset location and enable copying if you reach the full enable command
+                if location_in_command >= len(enable_str):
+                    location_in_command = 0
+                    enabled = True
+            # reset location if you don't match the command
+            else:
+                location_in_command = 0
+
     return filtered_string
+
 
 def main():
     products = []
