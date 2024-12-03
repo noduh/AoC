@@ -1,3 +1,6 @@
+IS_PART_2 = True
+
+
 def get_input(file_location: str) -> str:
     """takes the file and turns it into a string"""
     file_input = ""
@@ -135,6 +138,9 @@ def enable_disable_filter(input_string: str) -> str:
 def main():
     products = []
     input_string = get_input("2024\Day 03\challenge_input.txt")
+    if IS_PART_2:
+        input_string = enable_disable_filter(input_string)
+
     command_inputs = get_command_inputs("mul", input_string)
     for command_input in command_inputs:
         can_multiply, data = get_multiply_data(command_input)
