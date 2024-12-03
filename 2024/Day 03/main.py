@@ -36,11 +36,13 @@ def get_command_inputs(command: str, input_string: str) -> list[str]:
             if char == ")":  # 3nd of command
                 collecting_data = False  # don't collect at the end
                 inputs.append(current_input)
+                current_input = "" # clear input
             elif (
                 char == start_data_str[location_in_command]
             ):  # reset if you find the start of another command
                 location_in_command += 1
                 collecting_data = False
+                current_input = "" # clear input
             else:
                 current_input += char
 
@@ -101,6 +103,7 @@ def main():
         can_multiply, data = get_multiply_data(command_input)
         if can_multiply:
             x, y = data
+            print(f"{x}*{y}")
             products.append(multiply(x, y))
 
     product_total = total(products)
