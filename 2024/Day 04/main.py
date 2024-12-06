@@ -21,13 +21,16 @@ def search_letter(
     NORTHWEST = -1, 1
     directions = [NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST]
 
-    # Automatically return 0 if it doesn't work in any direction
-    if challenge_input[line_start][char_start] != word_to_search[0]:
-        return 0
+    directions_to_remove = []
 
     for multiplier, letter in enumerate(
-        word_to_search, 1
+        word_to_search
     ):  # multiplier lets us find the specific line and character easily
+        
+        for direction in directions_to_remove:
+            directions.remove(direction)
+        directions_to_remove = []
+
         for direction in directions:
             line_direction, char_direction = direction
             line_index = line_direction * multiplier + line_start
@@ -38,9 +41,9 @@ def search_letter(
                 or 0 > char_num
                 or char_num > len(challenge_input[line_index]) - 1
             ):
-                directions.remove(direction)
+                directions_to_remove.append(direction)
             elif challenge_input[line_index][char_num] != letter:
-                directions.remove(direction)
+                directions_to_remove.append(direction)
 
     return len(directions)
 
