@@ -63,7 +63,7 @@ def main():
     challenge_input = get_challenge_input("2024\Day 04\challenge_input.txt")
     word_to_search = "XMAS"
     count = search_input(word_to_search, challenge_input)
-    print(f"Found the word {word_to_search} {count} times!")
+    print(f'Found the word "{word_to_search}" {count} times!')
 
 
 main()
