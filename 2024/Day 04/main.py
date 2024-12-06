@@ -44,7 +44,16 @@ def search_letter(
 
 def search_input(word_to_search: str, challenge_input: list[str]) -> int:
     """Takes the challenge input and searches it to find the number of occurrences of the specified word. Returns that count."""
-    return 0
+    total_found = 0
+
+    for line_number, line in enumerate(challenge_input):
+        for char_number, char in enumerate(line):
+            if char == word_to_search[0]:
+                total_found += search_letter(
+                    line_number, char_number, word_to_search, challenge_input
+                )
+
+    return total_found
 
 
 def main():
