@@ -32,8 +32,11 @@ def search_letter(
             line_direction, char_direction = direction
             line_index = line_direction * multiplier + line_start
             char_num = char_direction * multiplier + char_start
-            if 0 > line_index > len(challenge_input) or 0 > char_num > len(
-                challenge_input[line_index]
+            if (
+                0 > line_index
+                or line_index > len(challenge_input) - 1
+                or 0 > char_num
+                or char_num > len(challenge_input[line_index]) - 1
             ):
                 directions.remove(direction)
             elif challenge_input[line_index][char_num] != letter:
