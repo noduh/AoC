@@ -23,10 +23,11 @@ def get_steps(file_location: str) -> list[tuple[int, int]]:
 
     return steps
 
+
 def get_sign(number: int | float) -> int:
     """
     Docstring for get_sign
-    
+
     :param number: any real number
     :type number: int | float
     :return: either 1 or -1 to indicate positive or negative, or 0 to indicate neither
@@ -36,24 +37,34 @@ def get_sign(number: int | float) -> int:
         return 0
     return int(number / abs(number))
 
+
+def simplify_location(number: int) -> int:
+    """
+    Docstring for simplify_location
+
+    :param number: location as a raw number
+    :type number: int
+    :return: the actual location after simplifying the number
+    :rtype: int
+    """
+    number %= 100
+    if get_sign(number) == -1:
+        number += 100
+    return number
+
+
 def main():
     current_location = 50
     password = 0
-    steps = get_steps("2025/Day 01/test_input.txt")
+    steps = get_steps("2025/Day 01/input.txt")
     for step in steps:
-        previous_sign = get_sign(current_location)
         distance = step[1]
         direction = step[0]
-        password += distance // 100 # accounts for distances greater than 100
-        distance = distance % 100   # 󱟀
-        current_location = (current_location + direction * distance) # gets new location
-        if current_location != current_location % 100 and current_location % 100 != 0: # checks if simplifying indicates passing 0
-            password += 1
-            current_location = current_location % 100 # simplifies
-        elif current_location != 0 and get_sign(current_location) != previous_sign: # checks if the sign has fully changed
-            password += 1
-        elif current_location == 0:
-            password += 1
+        for _ in range(distance):
+            current_location += direction
+            current_location = simplify_location(current_location)
+            if current_location == 0:
+                password += 1
     print(password)
 
 
