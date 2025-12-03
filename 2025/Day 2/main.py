@@ -1,9 +1,10 @@
 INPUT_FILE_LOCATION = "2025/Day 2/input.txt"
 
+
 def get_ids(file_location: str) -> list[tuple[int, int]]:
     """
     Gets IDs from the given input file
-    
+
     :param file_location: location of the file as a string
     :type file_location: str
     :return: list of ID ranges, where ranges are a tuple containing the IDs in the range
@@ -18,3 +19,13 @@ def get_ids(file_location: str) -> list[tuple[int, int]]:
         id_range_list = id_range.split("-")
         id_list.append((int(id_range_list[0]), int(id_range_list[1])))
     return id_list
+
+
+def check_id_validity(id: int) -> bool:
+    id_string = str(id)
+    id_string_length = len(id_string)
+    if id_string_length % 2 != 0:  # if the id is an odd length, it must be valid
+        return True
+    if id_string[(id_string_length // 2) :] == id_string[: (id_string_length // 2)]:
+        return False
+    return True
