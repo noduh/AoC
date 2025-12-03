@@ -1,13 +1,13 @@
 INPUT_FILE_LOCATION = "2025/Day 2/input.txt"
 
 
-def get_ids(file_location: str) -> list[tuple[int, int]]:
+def get_id_ranges(file_location: str) -> list[tuple[int, int]]:
     """
     Gets IDs from the given input file
 
     :param file_location: location of the file as a string
     :type file_location: str
-    :return: list of ID ranges, where ranges are a tuple containing the IDs in the range
+    :return: list of ID ranges, where ranges are a tuple containing the IDs on each end of the range
     :rtype: list[tuple[int, int]]
     """
     file_string = ""
