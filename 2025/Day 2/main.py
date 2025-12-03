@@ -47,4 +47,5 @@ def main():
         sum_invalid_ids += id
     print(sum_invalid_ids)
 
+
 main()
