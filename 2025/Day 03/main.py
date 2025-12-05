@@ -14,14 +14,14 @@ def get_battery_banks(file_location: str) -> list[list[int]]:
     banks = []
     with open(file_location, "r") as file:
         for line in file:
-            banks_string.append(line)
+            banks_string.append(line.replace("\n", ""))
     for bank_string in banks_string:
         bank_length = len(bank_string)
         bank_num = int(bank_string)
         bank = []
-        for i in range(2, bank_length + 1):
-            bank.append(bank_num // (10 ** (bank_length - i)))
-            bank_num %= 10 ** (bank_length - i)
+        for i in range(1, bank_length + 1):
+            bank.append(bank_num // (10 ** (bank_length - (i))))
+            bank_num %= 10 ** (bank_length - (i))
         banks.append(bank)
     return banks
 
@@ -39,11 +39,11 @@ def find_largest_joltage(bank: list[int]) -> int:
     second_battery_joltage = 0
     total_joltage = 0
     second_battery_start_index = 0
-    for i in range(len(bank) - 2):  # only go to the second-to-last index
+    for i in range(len(bank) - 1):  # only go to the second-to-last index
         if bank[i] > first_battery_joltage:
             first_battery_joltage = bank[i]
             second_battery_start_index = i + 1
-    for i in range(second_battery_start_index, len(bank) - 1):
+    for i in range(second_battery_start_index, len(bank)):
         if bank[i] > second_battery_joltage:
             second_battery_joltage = bank[i]
     total_joltage = int(str(first_battery_joltage) + str(second_battery_joltage))
@@ -51,7 +51,11 @@ def find_largest_joltage(bank: list[int]) -> int:
 
 
 def main():
-    pass
+    battery_banks = get_battery_banks(INPUT_FILE_LOCATION)
+    total_output_joltage = 0
+    for bank in battery_banks:
+        total_output_joltage += find_largest_joltage(bank)
+    print(total_output_joltage)
 
 
 main()
