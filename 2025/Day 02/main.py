@@ -17,7 +17,7 @@ def split_string(string_to_split: str, substring_length: int) -> list[str]:
         substring = string_to_split[:substring_length]
         substrings.append(substring)
         string_to_split = string_to_split[substring_length:]
-    if string_to_split != '':
+    if string_to_split != "":
         substrings.append(string_to_split)
     return substrings
 
