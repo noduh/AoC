@@ -29,7 +29,7 @@ def get_battery_banks(file_location: str) -> list[list[int]]:
 def find_largest_joltage(bank: list[int]) -> int:
     """
     Finds the largest joltage in the given bank
-    
+
     :param bank: the bank containing the batteries
     :type bank: list[int]
     :return: the largest possible output joltage of the bank
