@@ -77,8 +77,4 @@ def main():
     print(sum_invalid_ids)
 
 
-# main()
-print(check_id_validity(123123123))  # false
-print(check_id_validity(1231231234))  # true
-print(check_id_validity(1212121212))  # false
-print(check_id_validity(12345678))  # true
+main()
