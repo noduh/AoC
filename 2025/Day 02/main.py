@@ -1,4 +1,4 @@
-INPUT_FILE_LOCATION = "2025/Day 2/input.txt"
+INPUT_FILE_LOCATION = "2025/Day 02/input.txt"
 
 
 def split_string(string_to_split: str, substring_length: int) -> list[str]:
@@ -53,7 +53,7 @@ def check_id_validity(id: int) -> bool:
     """
     id_string = str(id)
     id_string_length = len(id_string)
-    for i in range(1, id_string_length // 2):
+    for i in range(1, id_string_length):
         id_string_substrings = split_string(id_string, i)
         if id_string_substrings == [id_string_substrings[0]] * (id_string_length // i):
             return False
