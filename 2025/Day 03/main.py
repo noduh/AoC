@@ -2,6 +2,14 @@ INPUT_FILE_LOCATION = "2025/Day 03/input.txt"
 
 
 def get_battery_banks(file_location: str) -> list[list[int]]:
+    """
+    Turns the input file into a useful list of battery banks
+    
+    :param file_location: location of the input file
+    :type file_location: str
+    :return: list of banks which are lists of batteries
+    :rtype: list[list[int]]
+    """
     banks_string = []
     banks = []
     with open(file_location, "r") as file:
