@@ -17,7 +17,8 @@ def split_string(string_to_split: str, substring_length: int) -> list[str]:
         substring = string_to_split[:substring_length]
         substrings.append(substring)
         string_to_split = string_to_split[substring_length:]
-    substrings.append(string_to_split)
+    if string_to_split != '':
+        substrings.append(string_to_split)
     return substrings
 
 
@@ -53,12 +54,9 @@ def check_id_validity(id: int) -> bool:
     id_string = str(id)
     id_string_length = len(id_string)
     for i in range(1, id_string_length // 2):
-        if id_string_length % i != 0:  # if the id is not divisible, it must be valid
-            return True
         id_string_substrings = split_string(id_string, i)
-        for substring in id_string_substrings:
-            if substring != id_string_substrings[0]:
-                return False
+        if id_string_substrings == [id_string_substrings[0]] * (id_string_length // i):
+            return False
     return True
 
 
@@ -80,7 +78,7 @@ def main():
 
 
 # main()
-print(check_id_validity(123123123)) # false
-print(check_id_validity(1231231234)) # true
-print(check_id_validity(1212121212)) # false
-print(check_id_validity(12345678)) # true
+print(check_id_validity(123123123))  # false
+print(check_id_validity(1231231234))  # true
+print(check_id_validity(1212121212))  # false
+print(check_id_validity(12345678))  # true
