@@ -77,10 +77,17 @@ def is_roll_accessible(
 def main():
     total_accessible = 0
     rolls = get_rolls(INPUT_FILE_LOCATION)
-    for row in range(len(rolls)):
-        for col in range(len(rolls[0])):
-            if rolls[row][col] and is_roll_accessible(row, col, rolls):
-                total_accessible += 1
+    rolls_can_be_removed = True
+    while rolls_can_be_removed:
+        accessible_rolls_to_add = 0
+        for row in range(len(rolls)):
+            for col in range(len(rolls[0])):
+                if rolls[row][col] and is_roll_accessible(row, col, rolls):
+                    accessible_rolls_to_add += 1
+                    rolls[row][col] = False
+        total_accessible += accessible_rolls_to_add
+        if accessible_rolls_to_add <= 0:
+            rolls_can_be_removed = False
     print(total_accessible)
 
 
